@@ -1,0 +1,27 @@
+<main class="characters-list">
+  <article class="characters__detail" *ngFor="let character of allCharacters?.results; let i = index; trackBy: trackByItems">
+    <a [routerLink]="['/detail/', character.id]">
+      <figure class="characters__detail-summary">
+        <img class="characters__detail-summary-image" src="{{character.image}}" alt="{{character.name}}">
+        <figcaption class="characters__detail-summary-name">{{character.name}}</figcaption>
+        <figcaption class="characters__detail-summary-status">{{character.status}}</figcaption>
+      </figure>
+    </a>
+      <div class="characters__detail-additional">
+        <div class="bracket bl"></div>
+        <div class="bracket br"></div>
+        <p class="characters__detail-additional-text">Specie: {{character.species}}</p>
+        <p class="characters__detail-additional-text">First Episode: {{character.firstEpisode}}</p>
+        <button class="characters__detail-additional-text" (click)="modal(character.location.url)">Last location: {{character.location.name}}</button>
+      </div>
+  </article>
+
+  <nav>
+    <button (click)="prevPage()">Prev</button>
+    <button (click)="nextPage()">Next</button>
+  </nav>
+
+  <div *ngIf="showModal" class="modal__background" (click)="showModal = false"></div>
+  <app-modal *ngIf="showModal" [url]="url">
+  </app-modal>
+</main>

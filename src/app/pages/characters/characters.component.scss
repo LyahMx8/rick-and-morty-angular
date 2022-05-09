@@ -1,0 +1,115 @@
+@import "../../../assets/sass/_vars.scss";
+
+.characters-list {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  background: rgba(0,28,6,.9);
+  box-shadow: 0 0 40px rgb(72 214 69 / 50%);
+  border-radius: 5px;
+  @media(max-width: 980px) {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .characters__detail {
+    width: 100%;
+    height: 270px;
+    position: relative;
+    &:hover {
+      box-shadow: 0 0 40px rgb(72 214 69 / 50%);
+      .characters__detail-additional {
+        top: 100%;
+        height: auto;
+        opacity: 1;
+      }
+    }
+    &-summary {
+      height: 100%;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        width: calc(100% - 20px);
+        height: 0;
+        transition: all .2s ease;
+        background-color: transparent;
+        border: 1px solid transparent;
+      }
+      &:hover::after {
+        top: 10px;
+        height: calc(100% - 20px);
+        border-color: #38d247;
+        background-color: rgba(72, 214, 69, .5);
+      }
+      &-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &-name {
+        position: absolute;
+        z-index: 1;
+        bottom: 33px;
+        left: 15px;
+        @include font(#195223, 17px, 19px, 300, left);
+      }
+      &-status {
+        position: absolute;
+        z-index: 1;
+        bottom: 15px;
+        left: 15px;
+        @include font(#fff, 14px, 17px, 500, left);
+      }
+    }
+    &-additional {
+      height: 0;
+      padding: 10px 15px 20px;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      opacity: 0;
+      transition: all .2s ease;
+      background-color: #21752a;
+      &-text {
+        @include font(#fff, 10px, 14px, 400, left);
+      }
+      .bracket {
+        border: 2px solid #38d247;
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        &.bl {
+          border-top: none;
+          border-right: none;
+          border-top-left-radius: 1.5px;
+          left: 5px;
+          bottom: 5px;
+        }
+        &.br {
+          border-top: none;
+          border-left: none;
+          border-top-left-radius: 1.5px;
+          right: 5px;
+          bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+
+.modal__background {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.6);
+  width: 100%;
+  height: 100vh;
+}

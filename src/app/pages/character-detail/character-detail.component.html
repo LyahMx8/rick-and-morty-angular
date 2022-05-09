@@ -1,0 +1,22 @@
+<main class="character">
+  <figure class="character__photo">
+    <img class="character__photo-image" src="{{character?.image}}" alt="{{character?.name}}">
+  </figure>
+
+  <article class="character__detail">
+    <section class="character__detail-info">
+      <p class="character__detail-info-text">{{character?.name}}</p>
+      <p class="character__detail-info-text">{{character?.gender}}</p>
+      <p class="character__detail-info-text">{{character?.species}}</p>
+      <p class="character__detail-info-text">{{character?.status}}</p>
+      <p class="character__detail-info-text">{{character?.origin?.name}}</p>
+    </section>
+
+    <section class="character__detail-episodes">
+      <a class="character__detail-episodes-list" *ngFor="let episode of character?.episode; let i = index" [routerLink]="['/episode/', i]">
+        {{episode}}
+      </a>
+    </section>
+
+  </article>
+</main>
